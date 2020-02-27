@@ -6,7 +6,7 @@
 
 
 
-**Professor**: "Va bene"
+**Professor**: "Filipo Lanubile"
 
 **University**: Università degli Studi di Bari Aldo Moro - Dipartimento di Informatica
 
