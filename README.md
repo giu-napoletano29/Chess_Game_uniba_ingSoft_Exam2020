@@ -12,7 +12,7 @@
 
 
 
-**Students**: Giuseppe Napoletano
+**Students**: Giuseppe Napoletano, Vincenzo Pio Somma, Domenico Sarcina, Nicola Nanula, Simone Madaghiele 
 
 
 
