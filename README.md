@@ -1,3 +1,24 @@
+# uniba_ingSoft_Exam2020
+
+**Exam**: "Ingegneria del Software"
+
+**Deadline**:  04/06/2020
+
+
+
+**Professor**: "Filipo Lanubile"
+
+**University**: Università degli Studi di Bari Aldo Moro - Dipartimento di Informatica
+
+
+
+**Students**: Giuseppe Napoletano, Vincenzo Pio Somma, Domenico Sarcina, Nicola Nanula, Simone Madaghiele, Daniele Tedesco, Maichol Rizzi 
+
+
+
+**Case Study**:  Making a functional chess game for two players. (Partially done)
+
+
 # scacchi ![CI/CD](https://github.com/softeng1920-inf-uniba/progetto1920-patterson/workflows/CI/CD/badge.svg) [![Coverage Status](https://coveralls.io/repos/github/softeng1920-inf-uniba/progetto1920-patterson/badge.svg?branch=master&t=TYbSkj)](https://coveralls.io/github/softeng1920-inf-uniba/progetto1920-patterson?branch=master)
 
 
