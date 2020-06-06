@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Command.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scacchi</a> &gt; <a href="index.source.html" class="el_package">it.uniba.command</a> &gt; <span class="el_source">Command.java</span></div><h1>Command.java</h1><pre class="source lang-java linenums">package it.uniba.command;
+import it.uniba.chessboard.Chessboard;
+import it.uniba.command.history.History;
+import java.util.Scanner;
+/**
+ * &lt;b&gt;This is the class of command&lt;/b&gt;
+ * &lt;br&gt;&lt;b&gt;Responsibility&lt;/b&gt;
+ * &lt;br&gt; This class can:
+ * &lt;br&gt; - show application menu
+ * &lt;br&gt; - show command list
+ * &lt;br&gt; - ask for commands
+ * &lt;br&gt;This class know:
+ * &lt;br&gt; - &quot;Chessboard&quot; class methods
+ * &lt;br&gt; - &quot;History&quot; class methods
+ * &lt;br&gt;&lt;b&gt;This class is &lt;i&gt;&quot; boundary &quot;&lt;/i&gt;&lt;/b&gt;.
+ */
+<span class="nc" id="L17">public class Command {</span>
+
+    /**
+     * Instantiate a new Chessboard.
+     */
+<span class="nc" id="L22">    static Chessboard chess = new Chessboard();</span>
+
+    /**
+     * Instantiate a new match history.
+     */
+<span class="nc" id="L27">    static History h = new History();</span>
+
+    /**
+     * Display welcome menu.
+     */
+    public static void menu() {
+<span class="nc" id="L33">        System.out.println(&quot;---------- BENVENUTI IN COMMAND-LINE CHESS GAME ----------\n\n&quot;);</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     * Get user's command from input stream.
+     * @return command
+     */
+    public static String enterCommand() {
+<span class="nc" id="L41">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L42">        System.out.println(&quot;Inserire il comando:  &quot;);</span>
+<span class="nc" id="L43">        String command = input.nextLine(); //.toLowerCase();</span>
+<span class="nc" id="L44">        return command;</span>
+    }
+
+    /**
+     * Calls the function associated with the given command.
+     * @param arg User's command returned by enterCommand()
+     */
+    public static void commandList(String arg) {
+<span class="nc" id="L52">        arg = arg.toLowerCase();</span>
+<span class="nc bnc" id="L53" title="All 7 branches missed.">        switch (arg) {</span>
+            case &quot;help&quot;:
+<span class="nc" id="L55">                help();</span>
+<span class="nc" id="L56">                break;</span>
+            case &quot;play&quot;:
+<span class="nc" id="L58">                play();</span>
+<span class="nc" id="L59">                break;</span>
+            case &quot;quit&quot;:
+                //Close.quit();
+<span class="nc" id="L62">                quit();</span>
+<span class="nc" id="L63">                break;</span>
+            case &quot;board&quot;:
+                //chess.display();
+<span class="nc" id="L66">                board();</span>
+<span class="nc" id="L67">                break;</span>
+            case &quot;moves&quot;:
+<span class="nc" id="L69">                history();</span>
+<span class="nc" id="L70">                break;</span>
+            case &quot;captures&quot;:
+<span class="nc" id="L72">                captured();</span>
+<span class="nc" id="L73">                break;</span>
+            default:
+<span class="nc" id="L75">                System.out.println(&quot;Il comando inserito non esiste! &quot;</span>
+                        + &quot;\n\nAssicurati di aver usato la sintassi corretta, &quot;
+                        + &quot;oppure digita 'help' per visualizzare la &quot;
+                        + &quot;lista dei comandi&quot;);
+        }
+<span class="nc" id="L80">    }</span>
+
+    /**
+     * Show all commands and descriptions.
+     */
+    private static void help() {
+<span class="nc" id="L86">        System.out.println ( &quot;Lista comandi:&quot; +</span>
+                &quot;\n\n --play: inizia una nuova partita&quot; +
+                &quot;\n\n --quit: esci dalla partita e dal gioco&quot; +
+                &quot;\n\n --help: visualizza la lista dei comandi&quot; +
+                &quot;\n\n --board: visualizza la scacchiera&quot; +
+                &quot;\n\n --moves: visualizza lo storico delle mosse&quot; +
+                &quot;\n\n --captures: visualizza la lista dei pezzi catturati&quot; );
+<span class="nc" id="L93">    }</span>
+
+    /**
+     * Show played moves.
+     */
+    private static void history() {
+<span class="nc" id="L99">        h.printPreviousMoves();</span>
+<span class="nc" id="L100">    }</span>
+
+    /**
+     * Show captured pieces.
+     */
+    private static void captured() {
+<span class="nc" id="L106">        h.printCatchHistory();</span>
+<span class="nc" id="L107">    }</span>
+
+    /**
+     * Start a new match.
+     */
+    private static void play() {
+<span class="nc" id="L113">        chess = new Chessboard();</span>
+<span class="nc" id="L114">        h = new History();</span>
+<span class="nc" id="L115">        h.clearPrevious();</span>
+<span class="nc" id="L116">        h.clearCaptured();</span>
+<span class="nc" id="L117">        System.out.println(&quot;\nHai iniziato una nuova partita!\n&quot;);</span>
+<span class="nc" id="L118">        System.out.println(&quot;---Istruzioni per l'uso---&quot;);</span>
+<span class="nc" id="L119">        System.out.println(&quot;\t-Ãˆ possibile effettuare una mossa utilizzando la notazione algebrica &quot;</span>
+                + &quot;italiana abbreviata. Es.: Ta5 per muovere, Txa5 per catturare&quot;);
+<span class="nc" id="L121">        System.out.println(&quot;\t-In alternativa Ã¨ possibile muovere inserendo la posizione&quot;</span>
+                + &quot; iniziale e la posizione finale. Es.: b2 b4&quot;);
+<span class="nc" id="L123">        System.out.println(&quot;\t-Fai la tua mossa o digita 'help' per la lista dei comandi&quot;);</span>
+        while (true) {
+<span class="nc" id="L125">            chess.update();</span>
+        }
+    }
+
+    /**
+     * Quit current match.
+     */
+    private static void quit(){
+<span class="nc" id="L133">        Scanner input = new Scanner ( System.in, &quot;UTF-8&quot;);</span>
+        String command;
+<span class="nc" id="L135">        System.out.println(&quot;Sei sicuro di voler uscire? [s/n]&quot;);</span>
+<span class="nc" id="L136">        command = input.nextLine().toLowerCase();</span>
+<span class="nc bnc" id="L137" title="All 4 branches missed.">        while (!command.equals(&quot;s&quot;) &amp;&amp; !command.equals(&quot;n&quot;)) {</span>
+<span class="nc" id="L138">            System.out.println(&quot;Errore! Digita 's' per confermare, 'n' &quot;</span>
+                    + &quot;se vuoi continuare la partita&quot;);
+<span class="nc" id="L140">            command = input.nextLine().toLowerCase();</span>
+        }
+<span class="nc bnc" id="L142" title="All 2 branches missed.">        if (command.equals(&quot;s&quot;)) {</span>
+<span class="nc" id="L143">            System.out.println(&quot;End of Program&quot;);</span>
+<span class="nc" id="L144">            System.exit(0);</span>
+        } else {
+<span class="nc bnc" id="L146" title="All 2 branches missed.">            if (command.equals(&quot;n&quot;)) {</span>
+<span class="nc" id="L147">                System.out.println(&quot;Continuerai la partita corrente&quot;);</span>
+            }
+        }
+<span class="nc" id="L150">    }</span>
+
+    /**
+     * Show the cheesboard.
+     */
+    private static void board(){
+<span class="nc" id="L156">        chess.display();</span>
+<span class="nc" id="L157">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

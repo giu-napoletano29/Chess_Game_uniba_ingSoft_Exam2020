@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Checks.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scacchi</a> &gt; <a href="index.source.html" class="el_package">it.uniba.checks</a> &gt; <span class="el_source">Checks.java</span></div><h1>Checks.java</h1><pre class="source lang-java linenums">package it.uniba.checks;
+
+import it.uniba.command.Command;
+import it.uniba.piece.Piece;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+
+/**
+ * &lt;b&gt;This is the class of Checks&lt;/b&gt;
+ * &lt;br&gt;&lt;b&gt;Responsibility&lt;/b&gt;
+ * &lt;br&gt;This class can:
+ * &lt;br&gt;- check the correspondence between chessboard letters and matrix indices
+ * &lt;br&gt;- translate matrix indices to chessboard numbers
+ * &lt;br&gt;- control if moves are valid
+ * &lt;br&gt;- control if moves respects italian short algebric notation
+ * &lt;br&gt;- control turn of moves
+ * &lt;br&gt;- control if a new game is requested
+ * &lt;br&gt;- control if starting position for a piece is valid
+ * &lt;br&gt;- check if King is surrounded by enemy pieces
+ * &lt;br&gt;This class know:
+ * &lt;br&gt;- &quot;Command&quot; class methods
+ * &lt;br&gt;- &quot;Piece&quot; class methods
+ * &lt;br&gt;
+ * &lt;br&gt;&lt;b&gt;This class is &lt;i&gt;&quot; control &quot;&lt;/i&gt;&lt;/b&gt;.
+ */
+<span class="nc" id="L30">public class Checks {</span>
+
+    /**
+     * Translates input letter into corresponding matrix index.
+     * @param arg Starting letter position for pieces
+     * @return x (Translated matrix index)
+     */
+    public static int checkCoordinates(String arg){
+<span class="nc" id="L38">        short x = -1;</span>
+<span class="nc bnc" id="L39" title="All 9 branches missed.">        switch (arg)</span>
+        {
+            case &quot;a&quot;:
+<span class="nc" id="L42">                x = 0;</span>
+<span class="nc" id="L43">                break;</span>
+            case &quot;b&quot;:
+<span class="nc" id="L45">                x = 1;</span>
+<span class="nc" id="L46">                break;</span>
+            case &quot;c&quot;:
+<span class="nc" id="L48">                x = 2;</span>
+<span class="nc" id="L49">                break;</span>
+            case &quot;d&quot;:
+<span class="nc" id="L51">                x = 3;</span>
+<span class="nc" id="L52">                break;</span>
+            case &quot;e&quot;:
+<span class="nc" id="L54">                x = 4;</span>
+<span class="nc" id="L55">                break;</span>
+            case &quot;f&quot;:
+<span class="nc" id="L57">                x = 5;</span>
+<span class="nc" id="L58">                break;</span>
+            case &quot;g&quot;:
+<span class="nc" id="L60">                x = 6;</span>
+<span class="nc" id="L61">                break;</span>
+            case &quot;h&quot;:
+<span class="nc" id="L63">                x = 7;</span>
+<span class="nc" id="L64">                break;</span>
+            default:
+<span class="nc" id="L66">                System.out.println ( &quot;Errore di traduzione coordinate! &quot;);</span>
+        }
+<span class="nc" id="L68">        return x;</span>
+    }
+
+    /**
+     * Translates input number into corresponding matrix index.
+     * @param arg Starting number position for pieces
+     * @return (Translated matrix index)
+     */
+    public static int numTranslation(int arg){
+<span class="nc" id="L77">        short num = 0;</span>
+<span class="nc bnc" id="L78" title="All 10 branches missed.">        switch (arg)</span>
+        {
+            case 0:
+<span class="nc" id="L81">                num = 8;       //Fast fix for reverse translation</span>
+<span class="nc" id="L82">                break;</span>
+            case 1:
+<span class="nc" id="L84">                num = 7;</span>
+<span class="nc" id="L85">                break;</span>
+            case 2:
+<span class="nc" id="L87">                num = 6;</span>
+<span class="nc" id="L88">                break;</span>
+            case 3:
+<span class="nc" id="L90">                num = 5;</span>
+<span class="nc" id="L91">                break;</span>
+            case 5:
+<span class="nc" id="L93">                num = 3;</span>
+<span class="nc" id="L94">                break;</span>
+            case 4:
+<span class="nc" id="L96">                num = 4;</span>
+<span class="nc" id="L97">                break;</span>
+            case 6:
+<span class="nc" id="L99">                num = 2;</span>
+<span class="nc" id="L100">                break;</span>
+            case 7:
+<span class="nc" id="L102">                num = 1;</span>
+<span class="nc" id="L103">                break;</span>
+            case 8:
+<span class="nc" id="L105">                num = 0;</span>
+<span class="nc" id="L106">                break;</span>
+            default:
+<span class="nc" id="L108">                System.out.println ( &quot;Errore di traduzione! &quot;);</span>
+        }
+<span class="nc" id="L110">        return num;</span>
+    }
+
+    /**
+     * Translates inserted move into matrix coordinates.
+     * @param mossa Inserted move
+     * @return numposition (Translated moves)
+     */
+    public static CmdString insAlgebricPos(String mossa){      //insert of Algebric Position. 2 Char only allowed
+<span class="nc" id="L119">        CmdString numposition = new CmdString();</span>
+<span class="nc" id="L120">        String[] split = mossa.split(&quot;&quot;);</span>
+<span class="nc" id="L121">        numposition.coords[0] = checkCoordinates(split[0]);    //int coordinates translation</span>
+<span class="nc" id="L122">        numposition.coords[1] = numTranslation(Integer.parseInt(split[1]));    //letter translation</span>
+<span class="nc" id="L123">        numposition.coords[2] = checkCoordinates(split[3]);</span>
+<span class="nc" id="L124">        numposition.coords[3] = numTranslation(Integer.parseInt(split[4]));</span>
+<span class="nc" id="L125">        return numposition;</span>
+    }
+
+    /**
+     * Translates inserted move in Short Algebric Notation into matrix coordinates.
+     * @param mossa Inserted move
+     * @param chessboard Game's Chessboard
+     * @param turn Player's turn
+     * @return numposition (Translated moves)
+     */
+    public static CmdString insShortAlgebricPos(String mossa, Piece[][] chessboard, short turn){      //insert of Algebric Position. 2 Char only allowed
+<span class="nc" id="L136">        CmdString numposition = new CmdString();</span>
+<span class="nc" id="L137">        String split[] = mossa.split(&quot;&quot;);</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        if(mossa.matches(&quot;((T|A|C|D|R|)([a-h]|)|)[a-h][1-8]&quot;)){</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">            if(split[0].matches(&quot;(T|A|C|D|R)&quot;)){</span>
+<span class="nc bnc" id="L140" title="All 2 branches missed.">                if(mossa.matches(&quot;(T|A|C|D|R|)[a-h][a-h][1-8]&quot;)){</span>
+<span class="nc" id="L141">                    numposition.coords[0] = checkCoordinates(split[1]);</span>
+<span class="nc" id="L142">                    numposition.coords[2] = checkCoordinates(split[2]);</span>
+<span class="nc" id="L143">                    numposition.coords[3] = numTranslation(Integer.parseInt(split[3]));</span>
+                }
+                else{
+<span class="nc" id="L146">                    numposition.coords[2] = checkCoordinates(split[1]);</span>
+<span class="nc" id="L147">                    numposition.coords[3] = numTranslation(Integer.parseInt(split[2]));</span>
+                }
+                //Finding Piece on chessboard
+<span class="nc bnc" id="L150" title="All 2 branches missed.">                for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">                    for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L152" title="All 2 branches missed.">                        if(chessboard[i][j].getName().equals(split[0])){</span>
+<span class="nc bnc" id="L153" title="All 4 branches missed.">                            if(numposition.coords[0] == -1 || numposition.coords[0] == chessboard[i][j].getPosition()[0]){</span>
+<span class="nc" id="L154">                                numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+                            }
+                        }
+                    }
+                }
+                //end
+<span class="nc bnc" id="L160" title="All 2 branches missed.">            }else if(split[1].matches(&quot;[1-8]&quot;)){  //Simple move Pawn</span>
+<span class="nc" id="L161">                numposition.coords[2] = checkCoordinates(split[0]);</span>
+<span class="nc" id="L162">                numposition.coords[3] = numTranslation(Integer.parseInt(split[1]));</span>
+                //Adding Starting position of every pawns on the chessboard
+<span class="nc bnc" id="L164" title="All 2 branches missed.">                for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">                    for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L166" title="All 2 branches missed.">                        if(chessboard[i][j].getName().equals(&quot;P&quot;)){</span>
+<span class="nc" id="L167">                            numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+                        }
+                    }
+                }
+                //end
+            }
+<span class="nc bnc" id="L173" title="All 2 branches missed.">        }else if(mossa.matches(&quot;([a-h]|((T|A|C|D|R|)([a-h]|)|))[x][a-h][1-8]( ep|)&quot;)){</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">            if(split[0].matches(&quot;(T|A|C|D|R)&quot;)){</span>
+<span class="nc" id="L175">                numposition.piece = split[0];</span>
+<span class="nc" id="L176">                numposition.isCapture = true;</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">                if(mossa.matches(&quot;(T|A|C|D|R|)[a-h].*&quot;)){</span>
+<span class="nc" id="L178">                    numposition.coords[0] = checkCoordinates(split[1]);</span>
+<span class="nc" id="L179">                    numposition.coords[2] = checkCoordinates(split[3]);</span>
+<span class="nc" id="L180">                    numposition.coords[3] = numTranslation(Integer.parseInt(split[4]));</span>
+                }
+                else{
+<span class="nc" id="L183">                    numposition.coords[2] = checkCoordinates(split[2]);</span>
+<span class="nc" id="L184">                    numposition.coords[3] = numTranslation(Integer.parseInt(split[3]));</span>
+                }
+                //Finding Piece on chessboard
+<span class="nc bnc" id="L187" title="All 2 branches missed.">                for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L188" title="All 2 branches missed.">                    for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L189" title="All 2 branches missed.">                        if(chessboard[i][j].getName().equals(numposition.piece)){</span>
+<span class="nc bnc" id="L190" title="All 4 branches missed.">                            if(numposition.coords[0] == -1 || numposition.coords[0] == chessboard[i][j].getPosition()[0]) {</span>
+<span class="nc" id="L191">                                numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+                            }
+                        }
+                    }
+                }
+                //end
+            }else{
+<span class="nc" id="L198">                numposition.pawnPos = checkCoordinates(split[0]);</span>
+<span class="nc" id="L199">                numposition.isCapture = true;</span>
+<span class="nc" id="L200">                numposition.coords[2] = checkCoordinates(split[2]);</span>
+<span class="nc" id="L201">                numposition.coords[3] = numTranslation(Integer.parseInt(split[3]));</span>
+<span class="nc bnc" id="L202" title="All 2 branches missed.">                if(mossa.contains(&quot;ep&quot;)){</span>
+<span class="nc" id="L203">                    numposition.isEnpassant = true;        //En-passant check</span>
+                }
+                //Adding Starting position of every pawns on the chessboard
+<span class="nc bnc" id="L206" title="All 2 branches missed.">                for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L207" title="All 2 branches missed.">                    for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L208" title="All 2 branches missed.">                        if(chessboard[i][j].getName().equals(&quot;P&quot;)){</span>
+<span class="nc" id="L209">                            numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+                        }
+                    }
+                }
+                //end
+            }
+        }
+<span class="nc bnc" id="L216" title="All 2 branches missed.">        else if(mossa.equals(&quot;0-0&quot;)){</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">            for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L218" title="All 2 branches missed.">                for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L219" title="All 2 branches missed.">                    if(chessboard[i][j].getName().equals(&quot;R&quot;)){</span>
+<span class="nc" id="L220">                        int[]temp = new int[2];</span>
+<span class="nc" id="L221">                        temp[1] = i;</span>
+<span class="nc" id="L222">                        temp[0] = j;</span>
+<span class="nc" id="L223">                        chessboard[i][j].setPosition(temp);</span>
+<span class="nc" id="L224">                        numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+<span class="nc" id="L225">                        numposition.coords[2] = 6;//col fixed</span>
+<span class="nc bnc" id="L226" title="All 2 branches missed.">                        if(turn %2 != 0){</span>
+<span class="nc" id="L227">                            numposition.coords[3] = 7; //Eighth row</span>
+<span class="nc" id="L228">                            numposition.castW[1] = 7;</span>
+<span class="nc" id="L229">                            numposition.castW[0] = numposition.coords[2]-1;</span>
+                        }else{
+<span class="nc" id="L231">                            numposition.coords[3] = 0; //First row</span>
+<span class="nc" id="L232">                            numposition.castB[1] = 0;</span>
+<span class="nc" id="L233">                            numposition.castB[0] = numposition.coords[2]-1;</span>
+                        }
+<span class="nc" id="L235">                        break;</span>
+                    }
+                }
+            }
+        }
+<span class="nc bnc" id="L240" title="All 2 branches missed.">        else if(mossa.equals(&quot;0-0-0&quot;)){</span>
+<span class="nc bnc" id="L241" title="All 2 branches missed.">            for(int i = 0; i&lt;=7; i++){</span>
+<span class="nc bnc" id="L242" title="All 2 branches missed.">                for(int j = 0; j&lt;=7; j++){</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">                    if(chessboard[i][j].getName().equals(&quot;R&quot;)){</span>
+<span class="nc" id="L244">                        int[]temp = new int[2];</span>
+<span class="nc" id="L245">                        temp[1] = i;</span>
+<span class="nc" id="L246">                        temp[0] = j;</span>
+<span class="nc" id="L247">                        chessboard[i][j].setPosition(temp);</span>
+<span class="nc" id="L248">                        numposition.possibleStartPos.add(chessboard[i][j].getPosition());</span>
+<span class="nc" id="L249">                        numposition.coords[2] = 2; //col fixed</span>
+<span class="nc bnc" id="L250" title="All 2 branches missed.">                        if(turn %2 != 0){</span>
+<span class="nc" id="L251">                            numposition.coords[3] = 7; //Eighth row</span>
+<span class="nc" id="L252">                            numposition.castW[1] = 7;</span>
+<span class="nc" id="L253">                            numposition.castW[0] = numposition.coords[2]+1;</span>
+                        }else{
+<span class="nc" id="L255">                            numposition.coords[3] = 0; //First row</span>
+<span class="nc" id="L256">                            numposition.castB[1] = 0;</span>
+<span class="nc" id="L257">                            numposition.castB[0] = numposition.coords[2]+1;</span>
+                        }
+<span class="nc" id="L259">                        break;</span>
+                    }
+                }
+            }
+        }
+<span class="nc" id="L264">        return numposition;</span>
+    }
+
+    /**
+     * Removes non valid starting positions for pieces.
+     * @param numposition Translated moves
+     * @param turn Player's turn
+     * @param chessboard Game's Chessboard
+     * @return numposition (Filtered set of starting positions)
+     */
+    public static CmdString filterStartPos(CmdString numposition, short turn, Piece[][] chessboard){
+        int[] move;
+<span class="nc" id="L276">        short count = 0;</span>
+<span class="nc bnc" id="L277" title="All 2 branches missed.">        for(int j = -1; j&lt;count; j++){</span>
+<span class="nc" id="L278">            int size = numposition.possibleStartPos.size();</span>
+<span class="nc bnc" id="L279" title="All 2 branches missed.">            for(int i = 0; i &lt; size; i++){</span>
+<span class="nc" id="L280">                move = numposition.possibleStartPos.get(i);</span>
+<span class="nc bnc" id="L281" title="All 4 branches missed.">                if((chessboard[move[1]][move[0]].getColor().compareTo(&quot;white&quot;) == 0) &amp;&amp; (turn % 2 == 0) ){</span>
+<span class="nc" id="L282">                    count++;</span>
+<span class="nc" id="L283">                    numposition.possibleStartPos.remove(i);</span>
+<span class="nc" id="L284">                    break;</span>
+                }
+<span class="nc bnc" id="L286" title="All 4 branches missed.">                else if((chessboard[move[1]][move[0]].getColor().compareTo(&quot;black&quot;) == 0) &amp;&amp; (turn % 2 != 0)) {</span>
+<span class="nc" id="L287">                    count++;</span>
+<span class="nc" id="L288">                    numposition.possibleStartPos.remove(i);</span>
+<span class="nc" id="L289">                    break;</span>
+                }
+            }
+        }
+<span class="nc" id="L293">        return numposition;</span>
+    }
+
+    /**
+     * Asks player for confirmatino if he wants start a new match.
+     * @param mossa Inserted move
+     */
+    public static void isPlay(String mossa){
+<span class="nc" id="L301">        Scanner input = new Scanner ( System.in, &quot;UTF-8&quot;);</span>
+        String command;
+<span class="nc bnc" id="L303" title="All 2 branches missed.">        if(mossa.equals(&quot;play&quot;)){</span>
+<span class="nc" id="L304">            System.out.println(&quot;Partita in corso! Iniziando una nuova partita perderai\nquella attuale. Sei sicuro? [s/n]&quot;);</span>
+<span class="nc" id="L305">            command = input.nextLine().toLowerCase();</span>
+<span class="nc bnc" id="L306" title="All 4 branches missed.">            while(!command.equals(&quot;s&quot;) &amp;&amp; !command.equals(&quot;n&quot;)){</span>
+<span class="nc" id="L307">                System.out.println(&quot;Errore! Digita 's' per confermare, 'n' se vuoi continuare la partita&quot;);</span>
+<span class="nc" id="L308">                command = input.nextLine().toLowerCase();</span>
+            }
+<span class="nc bnc" id="L310" title="All 2 branches missed.">            if(command.equals(&quot;s&quot;)){</span>
+<span class="nc" id="L311">                Command.commandList(mossa);</span>
+            }else{
+<span class="nc bnc" id="L313" title="All 2 branches missed.">                if(command.equals(&quot;n&quot;)){</span>
+<span class="nc" id="L314">                    System.out.println(&quot;Continuerai la partita corrente&quot;);</span>
+                }
+            }
+        }
+        else{
+<span class="nc" id="L319">            Command.commandList(mossa);</span>
+        }
+<span class="nc" id="L321">    }</span>
+
+    /**
+     * Tells the player that is not his turn if he try to move different pieces from his owns.
+     * @param pos Start position for pieces
+     * @param chessboard Game's Chessboard
+     * @param turn Player's turn
+     * @return error
+     */
+    public static boolean checkTurn(int[] pos, Piece[][] chessboard, int turn){
+<span class="nc" id="L331">        boolean error = false;</span>
+
+<span class="nc bnc" id="L333" title="All 4 branches missed.">        if((chessboard[pos[1]][pos[0]].getColor().compareTo(&quot;white&quot;) == 0) &amp;&amp; (turn % 2 == 0)){</span>
+<span class="nc" id="L334">            System.out.println(&quot;Il Bianco non puÃ² muovere adesso! Ãˆ il turno del Nero.&quot;);</span>
+<span class="nc" id="L335">            error = false;</span>
+        }
+<span class="nc bnc" id="L337" title="All 4 branches missed.">        else if((chessboard[pos[1]][pos[0]].getColor().compareTo(&quot;black&quot;) == 0) &amp;&amp; (turn % 2 != 0)) {</span>
+<span class="nc" id="L338">            System.out.println(&quot;Il Nero non puÃ² muovere adesso! Ãˆ il turno del Bianco.&quot;);</span>
+<span class="nc" id="L339">            error = false;</span>
+        }
+<span class="nc bnc" id="L341" title="All 2 branches missed.">        else if(chessboard[pos[1]][pos[0]].getColor().compareTo(&quot;invalid&quot;) == 0){</span>
+<span class="nc" id="L342">            System.out.println(&quot;Non Ã¨ un pezzo!&quot;);</span>
+<span class="nc" id="L343">            error = false;</span>
+        }
+        else{
+<span class="nc" id="L346">            error = true;</span>
+        }
+<span class="nc" id="L348">        return error;</span>
+    }
+
+    /**
+     * Tells the player that move is invalid if he try to move pieces using illegal moves for that piece.
+     * @param mov Start positon for pieces
+     * @param legalMoves List of legal moves for pieces
+     * @return error
+     */
+    public static boolean checkLegalMoves(int[] mov, List&lt;int[]&gt; legalMoves){
+<span class="nc" id="L358">        boolean error = false;</span>
+<span class="nc bnc" id="L359" title="All 2 branches missed.">        for(int i = 0; i &lt; legalMoves.size(); i++){</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">            if(Arrays.equals(mov, legalMoves.get(i))){</span>
+<span class="nc" id="L361">                error = true;</span>
+<span class="nc" id="L362">                break;</span>
+            }
+            else {
+<span class="nc" id="L365">                error = false;</span>
+            }
+        }
+<span class="nc" id="L368">        return error;</span>
+    }
+
+    /**
+     * Translates matrix coordinates into corresponding Chessboard letters.
+     * @param coord Matrix coordinates for Chessboard
+     * @return letter
+     */
+    public static char reverseCheckCoordinates(int coord){
+<span class="nc" id="L377">        char letter=' ';</span>
+<span class="nc bnc" id="L378" title="All 9 branches missed.">        switch (coord)</span>
+        {
+            case 0:
+<span class="nc" id="L381">                letter = 'a';</span>
+<span class="nc" id="L382">                break;</span>
+            case 1:
+<span class="nc" id="L384">                letter = 'b';</span>
+<span class="nc" id="L385">                break;</span>
+            case 2:
+<span class="nc" id="L387">                letter = 'c';</span>
+<span class="nc" id="L388">                break;</span>
+            case 3:
+<span class="nc" id="L390">                letter = 'd';</span>
+<span class="nc" id="L391">                break;</span>
+            case 4:
+<span class="nc" id="L393">                letter = 'e';</span>
+<span class="nc" id="L394">                break;</span>
+            case 5:
+<span class="nc" id="L396">                letter = 'f';</span>
+<span class="nc" id="L397">                break;</span>
+            case 6:
+<span class="nc" id="L399">                letter = 'g';</span>
+<span class="nc" id="L400">                break;</span>
+            case 7:
+<span class="nc" id="L402">                letter = 'h';</span>
+<span class="nc" id="L403">                break;</span>
+
+            default:
+                break;
+        }
+<span class="nc" id="L408">        return letter;</span>
+    }
+
+    /**
+     * Controls if final position for King puts him in check.
+     * @param kingPos Actual position for King
+     * @param chessboard Game's Chessboard
+     * @param color King's color
+     * @param turn Player turn
+     * @param pos Final position for King
+     * @return check
+     */
+    public static boolean isCheck(int[] kingPos, Piece[][] chessboard, String color, short turn, int[] pos){
+<span class="nc" id="L421">        boolean check = false;</span>
+        Piece tempPiece;
+<span class="nc" id="L423">        List&lt;int[]&gt; legalMoves = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L424" title="All 2 branches missed.">        for (int i = 0; i &lt;= 7; i++) {</span>
+<span class="nc bnc" id="L425" title="All 2 branches missed.">            for (int j = 0; j &lt;= 7; j++) {</span>
+<span class="nc bnc" id="L426" title="All 8 branches missed.">                if ((chessboard[i][j].getColor().equals(&quot;black&quot;) &amp;&amp; color.equals(&quot;white&quot;)) || (chessboard[i][j].getColor().equals(&quot;white&quot;) &amp;&amp; color.equals(&quot;black&quot;))) {</span>
+<span class="nc" id="L427">                    tempPiece = chessboard[kingPos[1]][kingPos[0]];</span>
+<span class="nc" id="L428">                    chessboard[kingPos[1]][kingPos[0]] = chessboard[pos[1]][pos[0]];</span>
+<span class="nc" id="L429">                    chessboard[pos[1]][pos[0]] = new Piece();</span>
+<span class="nc bnc" id="L430" title="All 2 branches missed.">                    if(chessboard[i][j].getName().compareTo(&quot;R&quot;) != 0){</span>
+<span class="nc" id="L431">                        legalMoves = chessboard[i][j].move(chessboard[i][j].getPosition(), chessboard[i][j].getColor(), chessboard, turn);</span>
+<span class="nc" id="L432">                        check = Checks.checkLegalMoves(kingPos, legalMoves);</span>
+                    }
+                    else{
+<span class="nc" id="L435">                        int[] temp = kingPos.clone();</span>
+<span class="nc bnc" id="L436" title="All 2 branches missed.">                        for(int y = 1; y&lt;=8; y++){</span>
+                            try {
+<span class="nc" id="L438">                                kingPosAround(temp, y);</span>
+<span class="nc bnc" id="L439" title="All 2 branches missed.">                                if(chessboard[temp[1]][temp[0]].getName().equals(&quot;R&quot;)){</span>
+<span class="nc" id="L440">                                    check = true;</span>
+                                }
+<span class="nc" id="L442">                            }catch(Exception ArrayIndexOutOfBoundsException){ }</span>
+<span class="nc" id="L443">                            temp = kingPos.clone();</span>
+                        }
+                    }
+<span class="nc" id="L446">                    chessboard[pos[1]][pos[0]] = chessboard[kingPos[1]][kingPos[0]];</span>
+<span class="nc" id="L447">                    chessboard[kingPos[1]][kingPos[0]] = tempPiece;</span>
+<span class="nc bnc" id="L448" title="All 2 branches missed.">                    if(check){</span>
+<span class="nc" id="L449">                        break;</span>
+                    }
+                }
+<span class="nc" id="L452">                legalMoves.clear();</span>
+            }
+<span class="nc bnc" id="L454" title="All 2 branches missed.">            if(check){</span>
+<span class="nc" id="L455">                break;</span>
+            }
+        }
+<span class="nc" id="L458">        return check;</span>
+    }
+
+    /**
+     * Chose the set of movement for King based on its starting position.
+     * @param temp List of possible moves for King
+     * @param y Select corresponding move in the switch
+     */
+    public static void kingPosAround(int[] temp, int y) {
+<span class="nc bnc" id="L467" title="All 9 branches missed.">        switch (y){</span>
+<span class="nc" id="L468">            case 1: temp[1] -= 1;   //up</span>
+<span class="nc" id="L469">                break;</span>
+<span class="nc" id="L470">            case 2: temp[1] += 1;   //down</span>
+<span class="nc" id="L471">                break;</span>
+<span class="nc" id="L472">            case 3: temp[0] -= 1;   //left</span>
+<span class="nc" id="L473">                break;</span>
+<span class="nc" id="L474">            case 4: temp[0] += 1;   //right</span>
+<span class="nc" id="L475">                break;</span>
+<span class="nc" id="L476">            case 5: temp[1] -= 1;   //up left</span>
+<span class="nc" id="L477">                temp[0] -= 1;</span>
+<span class="nc" id="L478">                break;</span>
+<span class="nc" id="L479">            case 6: temp[1] += 1;   //down right</span>
+<span class="nc" id="L480">                temp[0] += 1;</span>
+<span class="nc" id="L481">                break;</span>
+<span class="nc" id="L482">            case 7: temp[1] -= 1;   //up right</span>
+<span class="nc" id="L483">                temp[0] += 1;</span>
+<span class="nc" id="L484">                break;</span>
+<span class="nc" id="L485">            case 8: temp[1] += 1;   //down left</span>
+<span class="nc" id="L486">                temp[0] -= 1;</span>
+<span class="nc" id="L487">                break;</span>
+            default:
+<span class="nc" id="L489">                System.out.println(&quot;errore.&quot;);</span>
+                break;
+        }
+<span class="nc" id="L492">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

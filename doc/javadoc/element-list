@@ -1,0 +1,15 @@
+it.uniba.checks
+it.uniba.chessboard
+it.uniba.command
+it.uniba.command.history
+it.uniba.main
+it.uniba.piece
+it.uniba.piece.bishop
+it.uniba.piece.king
+it.uniba.piece.knight
+it.uniba.piece.pawn
+it.uniba.piece.queen
+it.uniba.piece.rook
+it.uniba.test.java.it.uniba.testCases.ChecksTest
+it.uniba.test.java.it.uniba.testCases.CommandTest
+it.uniba.test.java.it.uniba.testCases.PieceTest

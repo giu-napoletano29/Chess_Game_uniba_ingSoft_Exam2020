@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Piece.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scacchi</a> &gt; <a href="index.source.html" class="el_package">it.uniba.piece</a> &gt; <span class="el_source">Piece.java</span></div><h1>Piece.java</h1><pre class="source lang-java linenums">package it.uniba.piece;
+
+import java.lang.*;
+import java.util.*;
+
+/**
+ * &lt;b&gt;This is the class of piece&lt;/b&gt;
+ * &lt;br&gt;&lt;b&gt;Responsibility&lt;/b&gt;
+ * &lt;br&gt;This class can:
+ * &lt;br&gt;- define pieces characteristics
+ * &lt;br&gt;- define pieces feature
+ * &lt;br&gt;This class know:
+ * &lt;br&gt;- nothing
+ * &lt;br&gt;
+ * &lt;br&gt;&lt;b&gt;This class is &lt;i&gt;&quot; entity &quot;&lt;/i&gt;&lt;/b&gt;.
+ */
+public class Piece {
+
+    /**
+     * Icon of Piece.
+     */
+    protected String icon;
+
+    /**
+     * Color of Piece.
+     */
+    protected String color;
+
+    /**
+     * Position of Piece.
+     */
+    protected int[] position;
+
+    /**
+     * Count of movements for Piece.
+     */
+    protected int movesCount;
+
+    /**
+     * List of legal moves.
+     */
+    protected List&lt;int[]&gt; legalMoves;
+
+    /**
+     * List of en-passant captures.
+     */
+    protected List&lt;int[]&gt; enCapturesList;
+
+    /**
+     * List of captures.
+     */
+    protected List&lt;int[]&gt; capturesList;
+
+    /**
+     * Piece's value for counting points.
+     */
+    protected int valuePoint;
+
+    /**
+     * Piece's initial letter.
+     */
+    protected String name;
+
+    /**
+     * Piece's turn that moved last.
+     */
+    protected short turnLastMove;
+
+    /**
+     * Piece constructor.
+     */
+<span class="fc" id="L72">    public Piece(){</span>
+<span class="fc" id="L73">        this.icon = &quot;   &quot;;</span>
+<span class="fc" id="L74">        this.name = &quot;&quot;;</span>
+<span class="fc" id="L75">        this.color = &quot;invalid&quot;;</span>
+<span class="fc" id="L76">        this.position = new int[2];</span>
+<span class="fc" id="L77">        this.movesCount = 0;</span>
+<span class="fc" id="L78">        this.valuePoint = 0;</span>
+<span class="fc" id="L79">        this.turnLastMove = 0;</span>
+<span class="fc" id="L80">        this.legalMoves = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L81">        this.enCapturesList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L82">        this.capturesList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Return color of icon (invalid for empty boxes).
+     * @return icon
+     */
+    public String getIcon(){
+<span class="nc" id="L90">        return this.icon;</span>
+    }
+
+    /**
+     * Return name of pieces (no name for empty boxes).
+     * @return name
+     */
+    public String getName(){
+<span class="nc" id="L98">        return this.name;</span>
+    }
+
+    /**
+     * Getter method for pieces position.
+     * @return position
+     */
+    public int[] getPosition(){
+<span class="nc" id="L106">        return (int[])position.clone();</span>
+    }
+
+    /**
+     * Setter method for Piece position.
+     * @param args Final position of pieces
+     */
+    public void setPosition(int[] args) {
+<span class="fc" id="L114">        this.position = args.clone();</span>
+<span class="fc" id="L115">    }</span>
+
+    /**
+     * Getter method for last move turn.
+     * @return turnLastMove
+     */
+    public short getTurnLastMove() {
+<span class="nc" id="L122">        return this.turnLastMove;</span>
+    }
+
+    /**
+     * Setter method for last move turn.
+     * @param turn Last move turn
+     */
+    public void setTurnLastMove(short turn){
+<span class="nc" id="L130">        this.turnLastMove += turn;</span>
+<span class="nc" id="L131">    }</span>
+
+    /**
+     * Getter method for pieces color.
+     * @return color
+     */
+    public String getColor(){
+<span class="fc" id="L138">        return this.color;</span>
+    }
+
+    /**
+     * Setter method for pieces color.
+     * @param colo Piece color
+     */
+    public void setColor(String colo){
+<span class="fc" id="L146">        this.color = colo;</span>
+<span class="fc" id="L147">    }</span>
+
+    /**
+     * Getter method for moves count.
+     * @return movesCount
+     */
+    public int getMovesCount(){
+<span class="nc" id="L154">        return this.movesCount;</span>
+    }
+
+    /**
+     * Setter method for moves count.
+     */
+    public void setMovesCount(){
+<span class="nc" id="L161">        this.movesCount++;</span>
+<span class="nc" id="L162">    }</span>
+
+    /**
+     * Return piece's value.
+     * @return  valuePoint
+     */
+    public int getValuePoint() {
+<span class="nc" id="L169">        return this.valuePoint;</span>
+    }
+
+    /**
+     * Add piece to capture list.
+     * @param pos Final position for Piece
+     * @param chessboard Game's cheesboard
+     * @param color Color of Piece
+     */
+    public void capture(int[] pos, Piece chessboard, String color) {
+<span class="nc bnc" id="L179" title="All 2 branches missed.">        if(color.compareTo(&quot;white&quot;) == 0) {</span>
+<span class="nc bnc" id="L180" title="All 2 branches missed.">            if(chessboard.getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L181">                this.capturesList.add(pos);</span>
+            }
+<span class="nc bnc" id="L183" title="All 2 branches missed.">        }else if(color.compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc bnc" id="L184" title="All 2 branches missed.">            if(chessboard.getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L185">                this.capturesList.add(pos);</span>
+            }
+        }
+<span class="nc" id="L188">    }</span>
+
+    /**
+     * Return true/false if final position for piece is valid for en-passant.
+     * @param mov List of movements
+     * @return cap (true/false)
+     */
+    public boolean getEnCaptures(int[] mov){
+<span class="nc" id="L196">        boolean cap = false;</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">        for(int i = 0; i &lt; this.enCapturesList.size(); i++){</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">            if(Arrays.equals(mov, this.enCapturesList.get(i))){</span>
+<span class="nc" id="L199">                cap = true;</span>
+<span class="nc" id="L200">                break;</span>
+            }
+        }
+<span class="nc" id="L203">        return cap;</span>
+    }
+
+    /**
+     * Return true/false if capture is valid.
+     * @param mov List of movements
+     * @return cap (true/false)
+     */
+    public boolean getValidCaptures(int[] mov){
+<span class="nc" id="L212">        boolean cap = false;</span>
+        try {
+<span class="nc bnc" id="L214" title="All 2 branches missed.">            for (int i = 0; i &lt; this.capturesList.size(); i++) {</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">                if (Arrays.equals(mov, this.capturesList.get(i))) {</span>
+<span class="nc" id="L216">                    cap = true;</span>
+<span class="nc" id="L217">                    break;</span>
+                }
+            }
+<span class="nc" id="L220">        }catch (Exception NullPointerException){</span>
+<span class="nc" id="L221">        }</span>
+<span class="nc" id="L222">        return cap;</span>
+    }
+
+    /**
+     * Define an interface for pieces legal movements.
+     * @param arg Start position for pieces
+     * @param color Color of pieces
+     * @param chessboard Game's chessboard
+     * @param turn Player turn
+     * @return legalMoves (List of legal moves for pieces)
+     */
+    //arg must be start position
+    public List&lt;int[]&gt; move(int[] arg, String color, Piece[][] chessboard, short turn) {
+<span class="nc" id="L235">        return this.legalMoves;</span>
+    }
+
+<span class="nc" id="L238">    public List&lt;int[]&gt; getCapturesList(){ return this.capturesList;}</span>
+
+<span class="nc" id="L240">    public List&lt;int[]&gt; getEnCapturesList() { return this.enCapturesList;}</span>
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

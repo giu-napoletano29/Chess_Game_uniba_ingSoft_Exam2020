@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppMain.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scacchi</a> &gt; <a href="index.source.html" class="el_package">it.uniba.main</a> &gt; <span class="el_source">AppMain.java</span></div><h1>AppMain.java</h1><pre class="source lang-java linenums">package it.uniba.main;
+
+import it.uniba.command.Command;
+
+/*
+ * The main class for the project
+ * &lt;br&gt;It must be customized to meet the project
+ * assignment specifications
+ * &lt;br&gt;&lt;b&gt;DO NOT RENAME&lt;/b&gt;
+ */
+
+/**
+ * &lt;b&gt;This is the main class&lt;/b&gt;
+ * &lt;br&gt;&lt;b&gt;Responsibility&lt;/b&gt;
+ * &lt;br&gt;This class can:
+ * &lt;br&gt;- manage the application start
+ * &lt;br&gt;This class know:
+ * &lt;br&gt;- &quot;Command&quot; class methods
+ *
+ * &lt;br&gt;&lt;b&gt;This class is &lt;i&gt;&quot; control &quot;&lt;/i&gt;&lt;/b&gt;.
+ */
+public final class AppMain {
+
+	/**
+	 * Private constructor.
+	 */
+	private AppMain() {}
+
+	/**
+	 * This is the main entry of the application.
+	 * @param args Input stream parameter
+	 */
+	public static void main(final String[] args) {
+<span class="nc" id="L34">		Command.menu();</span>
+<span class="nc" id="L35">		String cmd = Command.enterCommand();</span>
+		while(true)
+		{
+<span class="nc" id="L38">			Command.commandList(cmd);</span>
+<span class="nc" id="L39">			cmd = Command.enterCommand();</span>
+		}
+	}
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

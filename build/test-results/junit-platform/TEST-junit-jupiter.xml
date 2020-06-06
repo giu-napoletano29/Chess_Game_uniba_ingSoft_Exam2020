@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Jupiter" tests="77" skipped="0" failures="0" errors="0" time="0.114" hostname="i7-Giuseppe" timestamp="2020-05-26T19:11:02">
+<properties>
+<property name="file.encoding" value="windows-1252"/>
+<property name="file.separator" value="\"/>
+<property name="java.class.path" value="C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\classes\java\test;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\resources\test;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\classes\java\main;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\resources\main;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.apis\google-api-services-drive\v3-rev154-1.25.0\b840aeb45c31b97e28f365667f93bbd86fd8790d\google-api-services-drive-v3-rev154-1.25.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client\1.25.0\e7ff725e89ff5dcbed107be1a24e8102ae2441ee\google-api-client-1.25.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-jetty\1.23.0\e0deaf34371e9ca09f9a04bcbaa854243283cae4\google-oauth-client-jetty-1.23.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\21.0\3a3d111be1be1b745edfa7d91678a12d7ed38709\guava-21.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-engine\5.5.1\5e6fdb03ccfc853aca39704c5e97850d732df204\junit-jupiter-engine-5.5.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.jupiter\junit-jupiter-api\5.5.1\fc466b57ceda453119bd630c830ec68b93bba7f4\junit-jupiter-api-5.5.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.vintage\junit-vintage-engine\5.5.1\6afaa240f16f69d324178f7f976461dfcfe42a85\junit-vintage-engine-5.5.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\junit\junit\4.13\e49ccba652b735c93bd6e6f59760d8254cf597dd\junit-4.13.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client-java6\1.23.0\7acbddf56c4ad04efc9d3b48fe015e6250241bf0\google-oauth-client-java6-1.23.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.25.0\c9ee14e8b095b4b301b28d57755cc482b8d6f39f\google-oauth-client-1.25.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-jackson2\1.25.0\7c5c89bd4d0d34d9f1cb3396e8da6233e5074b5c\google-http-client-jackson2-1.25.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty\6.1.26\2f546e289fddd5b1fab1d4199fbb6e9ef43ee4b0\jetty-6.1.26.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.5.1\ab7d21edb0b176698a8252374fbed4f665519cdd\junit-platform-engine-1.5.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.5.1\d94bdac345742fe1b0d993f0be51bb7146579b1b\junit-platform-commons-1.5.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.1.0\fc9dff4bb36d627bdc553de77e1f17efd790876c\apiguardian-api-1.1.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.2.0\28c11eb91f9b6d8e200631d46e20a7f407f2a046\opentest4j-1.2.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\jetty-util\6.1.26\e5642fe0399814e1687d55a3862aa5a3417226a9\jetty-util-6.1.26.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.mortbay.jetty\servlet-api\2.5-20081211\22bff70037e1e6fa7e6413149489552ee2064702\servlet-api-2.5-20081211.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.25.0\5fb16523c393bfe0210c29db44742bd308311841\google-http-client-1.25.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.2\25ea2e8b0c338a877313bd4672d3fe056ea78f0d\jsr305-3.0.2.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.9.6\4e393793c37c77e042ccc7be5a914ae39251b365\jackson-core-2.9.6.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient\4.5.5\1603dfd56ebcd583ccdf337b6c3984ac55d89e58\httpclient-4.5.5.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\com.google.j2objc\j2objc-annotations\1.1\ed28ded51a8b1c6b112568def5f4b455e6809019\j2objc-annotations-1.1.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpcore\4.4.9\a86ce739e5a7175b4b234c290a00a5fdb80957a0\httpcore-4.4.9.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\commons-logging\commons-logging\1.2\4bfc12adfe4842bf07b657f0369c4cb522955686\commons-logging-1.2.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\commons-codec\commons-codec\1.10\4b95f4897fa13f2cd904aee711aeafc0c5295cd8\commons-codec-1.10.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-console\1.1.0\1ea376db54ab4ec0018c5e99d414e1c7c034387\junit-platform-console-1.1.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-launcher\1.1.0\ba098edde4e59cacd9225e238ea3ad9c946684ab\junit-platform-launcher-1.1.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-engine\1.1.0\2596bd4d909e7ea8d029272db4338075445d731b\junit-platform-engine-1.1.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.junit.platform\junit-platform-commons\1.1.0\d6aa21029f9cedfb4cc8a9e9efc0bd97987205b8\junit-platform-commons-1.1.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.apiguardian\apiguardian-api\1.0.0\3ef5276905e36f4d8055fe3cb0bdcc7503ffc85d\apiguardian-api-1.0.0.jar;C:\Users\Giuseppe\.gradle\caches\modules-2\files-2.1\org.opentest4j\opentest4j\1.0.0\6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4\opentest4j-1.0.0.jar"/>
+<property name="java.class.version" value="57.0"/>
+<property name="java.home" value="C:\Program Files\Java\jdk-13.0.2"/>
+<property name="java.io.tmpdir" value="C:\Users\Giuseppe\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Program Files\Java\jdk-13.0.2\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Caminova\Document Express DjVu Plug-in\;C:\Windows\System32;C:\Windows;C:\Windows\System32\wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files (x86)\B1 Free Archiver\B1 Free Archiver;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Microsoft SQL Server Migration Assistant for Access\bin\;C:\Program Files\Git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Visual Leak Detector\bin\Win32;C:\Program Files (x86)\Visual Leak Detector\bin\Win64;C:\Users\Giuseppe\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\PuTTY\;C:\Program Files (x86)\Yarn\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\xampp\php;C:\ProgramData\ComposerSetup\bin;D:\Program Files\doxygen\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Giuseppe\AppData\Local\Microsoft\WindowsApps;C:\Users\Giuseppe\AppData\Roaming\Dashlane\4.6.5.21982\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Giuseppe\AppData\Roaming\Dashlane\4.6.6.23032\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Giuseppe\AppData\Roaming\Dashlane\5.2.0.12122\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Giuseppe\AppData\Roaming\Dashlane\5.2.0.12122\ucrt;C:\Users\Giuseppe\AppData\Local\Yarn\bin;C:\Users\Giuseppe\AppData\Roaming\Dashlane\5.12.0.19744\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Giuseppe\AppData\Roaming\Dashlane\5.12.0.19744\ucrt;C:\Users\Giuseppe\AppData\Local\Microsoft\WindowsApps;C:\Users\Giuseppe\AppData\Roaming\Dashlane\6.1907.0.17833\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Giuseppe\AppData\Roaming\Dashlane\6.1907.0.17833\ucrt;C:\Users\Giuseppe\AppData\Roaming\Dashlane\6.1907.0.17833\bin\Qt;C:\Users\Giuseppe\AppData\Roaming\Dashlane\6.1907.0.17833\bin\Ssl;C:\Users\Giuseppe\AppData\Roaming\Composer\vendor\bin;;C:\Users\Giuseppe\AppData\Local\Programs\Microsoft VS Code\bin;."/>
+<property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+<property name="java.runtime.version" value="13.0.2+8"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="13"/>
+<property name="java.vendor" value="Oracle Corporation"/>
+<property name="java.vendor.url" value="https://java.oracle.com/"/>
+<property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+<property name="java.version" value="13.0.2"/>
+<property name="java.version.date" value="2020-01-14"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="13"/>
+<property name="java.vm.vendor" value="Oracle Corporation"/>
+<property name="java.vm.version" value="13.0.2+8"/>
+<property name="jdk.debug" value="release"/>
+<property name="line.separator" value="
+"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Windows 10"/>
+<property name="os.version" value="10.0"/>
+<property name="path.separator" value=";"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-13.0.2\bin"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.cpu.isalist" value="amd64"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\classes\java\main;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\resources\main;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\classes\java\test;C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\resources\test -n ^.*Tests?$ -e junit-jupiter --reports-dir C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson\build\test-results\junit-platform"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="Cp1252"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="sun.os.patch.level" value=""/>
+<property name="user.country" value="IT"/>
+<property name="user.dir" value="C:\Users\Giuseppe\IdeaProjects\progetto1920-patterson"/>
+<property name="user.home" value="C:\Users\Giuseppe"/>
+<property name="user.language" value="it"/>
+<property name="user.name" value="Giuseppe"/>
+<property name="user.script" value=""/>
+<property name="user.timezone" value="Europe/Rome"/>
+<property name="user.variant" value=""/>
+</properties>
+<testcase name="printPreviousMovesTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest" time="0.015">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest]/[method:printPreviousMovesTest()]
+display-name: printPreviousMovesTest()
+]]></system-out>
+</testcase>
+<testcase name="clearCapturedTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest]/[method:clearCapturedTest()]
+display-name: clearCapturedTest()
+]]></system-out>
+</testcase>
+<testcase name="printCatchHistoryTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest]/[method:printCatchHistoryTest()]
+display-name: printCatchHistoryTest()
+]]></system-out>
+</testcase>
+<testcase name="clearPreviousTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.HistoryTest]/[method:clearPreviousTest()]
+display-name: clearPreviousTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteCaptureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:moveWhiteCaptureTest()]
+display-name: moveWhiteCaptureTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackCaptureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:moveBlackCaptureTest()]
+display-name: moveBlackCaptureTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.QueenTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="filterStartPosTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:filterStartPosTest()]
+display-name: filterStartPosTest()
+]]></system-out>
+</testcase>
+<testcase name="checkCoordinatesTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:checkCoordinatesTest()]
+display-name: checkCoordinatesTest()
+]]></system-out>
+</testcase>
+<testcase name="checkTurnTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:checkTurnTest()]
+display-name: checkTurnTest()
+]]></system-out>
+</testcase>
+<testcase name="reverseCheckCoordinatesTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:reverseCheckCoordinatesTest()]
+display-name: reverseCheckCoordinatesTest()
+]]></system-out>
+</testcase>
+<testcase name="numTranslationTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:numTranslationTest()]
+display-name: numTranslationTest()
+]]></system-out>
+</testcase>
+<testcase name="insAlgebricPosTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:insAlgebricPosTest()]
+display-name: insAlgebricPosTest()
+]]></system-out>
+</testcase>
+<testcase name="insShortAlgebricPosTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:insShortAlgebricPosTest()]
+display-name: insShortAlgebricPosTest()
+]]></system-out>
+</testcase>
+<testcase name="isCheckTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:isCheckTest()]
+display-name: isCheckTest()
+]]></system-out>
+</testcase>
+<testcase name="checkLegalMovesTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.ChecksTest]/[method:checkLegalMovesTest()]
+display-name: checkLegalMovesTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KingTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="enCaptureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:enCaptureTest()]
+display-name: enCaptureTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="captureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:captureTest()]
+display-name: captureTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteDiagonalTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PawnTest]/[method:moveWhiteDiagonalTest()]
+display-name: moveWhiteDiagonalTest()
+]]></system-out>
+</testcase>
+<testcase name="getCastWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.CmdStringTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.CmdStringTest]/[method:getCastWhiteTest()]
+display-name: getCastWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getCastBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.ChecksTest.CmdStringTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChecksTest.CmdStringTest]/[method:getCastBlackTest()]
+display-name: getCastBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteCaptureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:moveWhiteCaptureTest()]
+display-name: moveWhiteCaptureTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackCaptureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:moveBlackCaptureTest()]
+display-name: moveBlackCaptureTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.BishopTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.KnightTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="enterCommandTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0.003">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:enterCommandTest()]
+display-name: enterCommandTest()
+]]></system-out>
+</testcase>
+<testcase name="menuTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:menuTest()]
+display-name: menuTest()
+]]></system-out>
+</testcase>
+<testcase name="historyTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:historyTest()]
+display-name: historyTest()
+]]></system-out>
+</testcase>
+<testcase name="capturedTest()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:capturedTest()]
+display-name: capturedTest()
+]]></system-out>
+</testcase>
+<testcase name="commandListTest1()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:commandListTest1()]
+display-name: commandListTest1()
+]]></system-out>
+</testcase>
+<testcase name="commandListTest3()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:commandListTest3()]
+display-name: commandListTest3()
+]]></system-out>
+</testcase>
+<testcase name="commandListTest5()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:commandListTest5()]
+display-name: commandListTest5()
+]]></system-out>
+</testcase>
+<testcase name="commandListTest6()" classname="it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.CommandTest.CommandTest]/[method:commandListTest6()]
+display-name: commandListTest6()
+]]></system-out>
+</testcase>
+<testcase name="moveBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest]/[method:moveBlackTest()]
+display-name: moveBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconBlackTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest]/[method:getIconBlackTest()]
+display-name: getIconBlackTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="moveWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest]/[method:moveWhiteTest()]
+display-name: moveWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconWhiteTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.RookTest]/[method:getIconWhiteTest()]
+display-name: getIconWhiteTest()
+]]></system-out>
+</testcase>
+<testcase name="displayTest()" classname="it.uniba.test.java.it.uniba.testCases.ChessboardTest.ChessboardTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.ChessboardTest.ChessboardTest]/[method:displayTest()]
+display-name: displayTest()
+]]></system-out>
+</testcase>
+<testcase name="setPositionTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:setPositionTest()]
+display-name: setPositionTest()
+]]></system-out>
+</testcase>
+<testcase name="getTurnLastMoveTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getTurnLastMoveTest()]
+display-name: getTurnLastMoveTest()
+]]></system-out>
+</testcase>
+<testcase name="getEnCapturesTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getEnCapturesTest()]
+display-name: getEnCapturesTest()
+]]></system-out>
+</testcase>
+<testcase name="setColorTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:setColorTest()]
+display-name: setColorTest()
+]]></system-out>
+</testcase>
+<testcase name="getNameTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getNameTest()]
+display-name: getNameTest()
+]]></system-out>
+</testcase>
+<testcase name="getValidCapturesTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getValidCapturesTest()]
+display-name: getValidCapturesTest()
+]]></system-out>
+</testcase>
+<testcase name="getValuePointTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getValuePointTest()]
+display-name: getValuePointTest()
+]]></system-out>
+</testcase>
+<testcase name="getCapturesListTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getCapturesListTest()]
+display-name: getCapturesListTest()
+]]></system-out>
+</testcase>
+<testcase name="moveTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:moveTest()]
+display-name: moveTest()
+]]></system-out>
+</testcase>
+<testcase name="captureTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:captureTest()]
+display-name: captureTest()
+]]></system-out>
+</testcase>
+<testcase name="setMovesCountTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:setMovesCountTest()]
+display-name: setMovesCountTest()
+]]></system-out>
+</testcase>
+<testcase name="setTurnLastMoveTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:setTurnLastMoveTest()]
+display-name: setTurnLastMoveTest()
+]]></system-out>
+</testcase>
+<testcase name="getIconTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getIconTest()]
+display-name: getIconTest()
+]]></system-out>
+</testcase>
+<testcase name="getMovesCountTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getMovesCountTest()]
+display-name: getMovesCountTest()
+]]></system-out>
+</testcase>
+<testcase name="getPositionTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getPositionTest()]
+display-name: getPositionTest()
+]]></system-out>
+</testcase>
+<testcase name="getEnCapturesListTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getEnCapturesListTest()]
+display-name: getEnCapturesListTest()
+]]></system-out>
+</testcase>
+<testcase name="getColorTest()" classname="it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:it.uniba.test.java.it.uniba.testCases.PieceTest.PieceTest]/[method:getColorTest()]
+display-name: getColorTest()
+]]></system-out>
+</testcase>
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]
+display-name: JUnit Jupiter
+]]></system-out>
+</testsuite>

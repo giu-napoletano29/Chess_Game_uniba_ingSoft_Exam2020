@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Queen.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scacchi</a> &gt; <a href="index.source.html" class="el_package">it.uniba.piece.queen</a> &gt; <span class="el_source">Queen.java</span></div><h1>Queen.java</h1><pre class="source lang-java linenums">package it.uniba.piece.queen;
+
+import it.uniba.piece.Piece;
+import java.util.List;
+
+/**
+ * &lt;b&gt;This is the class of Queen&lt;/b&gt;
+ * &lt;br&gt;&lt;b&gt;Responsibility&lt;/b&gt;
+ * &lt;br&gt;This class can:
+ * &lt;br&gt;- define Queen's characteristics
+ * &lt;br&gt;- define Queen's feature
+ * &lt;br&gt;- define Queen's movements and capture rules
+ * &lt;br&gt;This class know:
+ * &lt;br&gt;- what are the characteristics of a piece
+ * &lt;br&gt;
+ * &lt;br&gt;&lt;b&gt;This class is &lt;i&gt;&quot; entity &quot;&lt;/i&gt;&lt;/b&gt;.
+ */
+public class Queen extends Piece {
+
+    /**
+     * Black icon of Queen.
+     */
+    private static final String icoBlack = &quot; \u265b &quot;;
+
+    /**
+     * White icon of Queen.
+     */
+    private static final String icoWhite = &quot; \u2655 &quot;;
+
+    /**
+     * Queen's value for counting points.
+     */
+    public int valuePoint;
+
+    /**
+     * Queen constructor.
+     */
+<span class="nc" id="L38">    public Queen(){</span>
+<span class="nc" id="L39">        this.icon = &quot; D &quot;;</span>
+<span class="nc" id="L40">        this.name = &quot;D&quot;;</span>
+<span class="nc" id="L41">        this.valuePoint = 9;</span>
+<span class="nc" id="L42">    }</span>
+
+    /**
+     * Return color of icon (white or black).
+     * @return icon
+     */
+    public String getIcon(){
+
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(this.getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L51">            this.icon = icoWhite;</span>
+        }
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        else if (this.getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L54">            this.icon = icoBlack;</span>
+        }
+
+<span class="nc" id="L57">        return this.icon;</span>
+    }
+
+    /**
+     * Defines a list of legal moves for Queen.
+     * @param arg Start position for Queen
+     * @param color Color of Queen
+     * @param chessboard Game's cheesboard
+     * @param turn Player turn
+     * @return legalMoves (List of legal moves for Queen)
+     */
+    @Override
+    public List&lt;int[]&gt; move(int[] arg, String color, Piece[][] chessboard, short turn) {
+<span class="nc" id="L70">        int[] temp = arg.clone();</span>
+<span class="nc" id="L71">        this.legalMoves.clear();</span>
+<span class="nc" id="L72">        this.capturesList.clear();</span>
+
+        //this if controls if the actual Queen is white or black, if white executes the 4 movements for white
+        //otherwise it will execute the 4 black movements
+        //there are 4 loops for white and 4 loops for black (one for up, one for down, one for left, one for right)
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0){</span>
+
+            //vertical movements for white Queen
+            //from white to black (from 1 to 8)
+            try {
+<span class="nc" id="L82">                int s = temp[1];</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">                for (int i = 1; i &lt;= s; i++) {</span>
+<span class="nc" id="L84">                    temp[1] -= i;</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">                    if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L86">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L87">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L88">                        break;</span>
+                    }
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L91">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L92">                        temp = arg.clone();</span>
+                    }else {
+                        break;
+                    }
+                }
+<span class="nc" id="L97">            }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L98">            }</span>
+
+            //from black back to white (from 8 to 1)
+            try {
+<span class="nc" id="L102">                temp = arg.clone();</span>
+<span class="nc" id="L103">                int s = temp[1];</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">                for (int i = s+1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L105">                    temp[1] = i;</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                    if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L107">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L108">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L109">                        break;</span>
+                    }
+<span class="nc bnc" id="L111" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L112">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L113">                        temp = arg.clone();</span>
+                    }else {
+                        break;
+                    }
+                }
+<span class="nc" id="L118">            }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L119">            }</span>
+
+            //orizzontal movements for Queen
+            //from left to right (from a to h)
+            try {
+<span class="nc" id="L124">                temp = arg.clone();</span>
+<span class="nc" id="L125">                int s = temp[0];</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">                for (int i = s+1; i &lt;=7; i++) {</span>
+<span class="nc" id="L127">                    temp[0] = i;</span>
+<span class="nc bnc" id="L128" title="All 2 branches missed.">                    if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L129">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L130">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L131">                        break;</span>
+                    }
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L134">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L135">                        temp = arg.clone();</span>
+                    }else {
+                        break;
+                    }
+                }
+<span class="nc" id="L140">            }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L141">            }</span>
+
+            //from right to left (from h to a)
+            try {
+<span class="nc" id="L145">                temp = arg.clone();</span>
+<span class="nc" id="L146">                int s = temp[0];</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">                for (int i = s-1; i &gt;=0; i--) {</span>
+<span class="nc" id="L148">                    temp[0] = i;</span>
+<span class="nc bnc" id="L149" title="All 2 branches missed.">                    if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0){</span>
+<span class="nc" id="L150">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L151">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L152">                        break;</span>
+                    }
+<span class="nc bnc" id="L154" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L155">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L156">                        temp = arg.clone();</span>
+                    }else {
+                        break;
+                    }
+                }
+<span class="nc" id="L161">            }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L162">            }</span>
+
+        }else{ //if not white check if black
+<span class="nc bnc" id="L165" title="All 2 branches missed.">            if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0){</span>
+                //vertical movements for white Queen
+                //from black to white (from 8 to 1)
+                try {
+<span class="nc" id="L169">                    int s = temp[1];</span>
+<span class="nc bnc" id="L170" title="All 2 branches missed.">                    for (int i = s+1; i &lt;=7; i++) {</span>
+<span class="nc" id="L171">                        temp[1] = i;</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">                        if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L173">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L174">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L175">                            break;</span>
+                        }
+<span class="nc bnc" id="L177" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L178">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L179">                            temp = arg.clone();</span>
+                        }else {
+                            break;
+                        }
+                    }
+<span class="nc" id="L184">                }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L185">                }</span>
+
+                //from white to black (from 1 to 8)
+                try {
+<span class="nc" id="L189">                    temp = arg.clone();</span>
+<span class="nc" id="L190">                    int s = temp[1];</span>
+<span class="nc bnc" id="L191" title="All 2 branches missed.">                    for (int i = s-1; i &gt;=0; i--) {</span>
+<span class="nc" id="L192">                        temp[1] = i;</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">                        if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L194">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L195">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L196">                            break;</span>
+                        }
+<span class="nc bnc" id="L198" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L199">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L200">                            temp = arg.clone();</span>
+                        }else {
+                            break;
+                        }
+                    }
+<span class="nc" id="L205">                }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L206">                }</span>
+
+                //orizzontal movements for Queen
+                //from left to right (from a to h)
+                try {
+<span class="nc" id="L211">                    temp = arg.clone();</span>
+<span class="nc" id="L212">                    int s = temp[0];</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">                    for (int i = s+1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L214">                        temp[0] = i;</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">                        if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L216">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L217">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L218">                            break;</span>
+                        }
+<span class="nc bnc" id="L220" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L221">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L222">                            temp = arg.clone();</span>
+                        }else {
+                            break;
+                        }
+                    }
+<span class="nc" id="L227">                }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L228">                }</span>
+
+                //from right to left (from h to a)
+                try {
+<span class="nc" id="L232">                    temp = arg.clone();</span>
+<span class="nc" id="L233">                    int s = temp[0];</span>
+<span class="nc bnc" id="L234" title="All 2 branches missed.">                    for (int i = s-1; i &gt;=0; i--) {</span>
+<span class="nc" id="L235">                        temp[0] = i;</span>
+<span class="nc bnc" id="L236" title="All 2 branches missed.">                        if(chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0){</span>
+<span class="nc" id="L237">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L238">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L239">                            break;</span>
+                        }
+<span class="nc bnc" id="L241" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L242">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L243">                            temp = arg.clone();</span>
+                        }else {
+                            break;
+                        }
+                    }
+<span class="nc" id="L248">                }catch (Exception ArrayIndexOutOfBoundsException){</span>
+<span class="nc" id="L249">                }</span>
+            }
+        }
+
+<span class="nc" id="L253">        temp = arg.clone();</span>
+
+<span class="nc bnc" id="L255" title="All 2 branches missed.">        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0) {</span>
+
+            //diagonal movements for white Queen
+            //from the lower left corner to the upper right corner (from a1 to h8)
+            try {
+<span class="nc" id="L260">                int s = temp[1];</span>
+<span class="nc bnc" id="L261" title="All 2 branches missed.">                for (int i = 1; i &lt;= s; i++) {</span>
+<span class="nc" id="L262">                    temp[1] -= i;</span>
+<span class="nc" id="L263">                    temp[0] +=i;</span>
+<span class="nc bnc" id="L264" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0) {</span>
+<span class="nc" id="L265">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L266">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L267">                        break;</span>
+                    }
+<span class="nc bnc" id="L269" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L270">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L271">                        temp = arg.clone();</span>
+                    } else {
+                        break;
+                    }
+                }
+<span class="nc" id="L276">            } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L277">            }</span>
+
+            //from the upper right corner to the lower left corner (from h8 to a1)
+            try {
+<span class="nc" id="L281">                temp = arg.clone();</span>
+<span class="nc" id="L282">                int s = temp[1];</span>
+<span class="nc" id="L283">                int j = temp[0]-1;</span>
+<span class="nc bnc" id="L284" title="All 2 branches missed.">                for (int i = s + 1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L285">                    temp[1] = i;</span>
+<span class="nc" id="L286">                    temp[0]= j;</span>
+<span class="nc bnc" id="L287" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0) {</span>
+<span class="nc" id="L288">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L289">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L290">                        break;</span>
+                    }
+<span class="nc bnc" id="L292" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L293">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L294">                        temp = arg.clone();</span>
+                    } else {
+                        break;
+                    }
+<span class="nc" id="L298">                    j--;</span>
+                }
+<span class="nc" id="L300">            } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L301">            }</span>
+
+            //from upper left corner to lower right corner (from a8 to h1)
+            try {
+<span class="nc" id="L305">                temp = arg.clone();</span>
+<span class="nc" id="L306">                int s = temp[0];</span>
+<span class="nc" id="L307">                int j = temp[1]+1;</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">                for (int i = s + 1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L309">                    temp[0] = i;</span>
+<span class="nc" id="L310">                    temp[1] = j;</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0) {</span>
+<span class="nc" id="L312">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L313">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L314">                        break;</span>
+                    }
+<span class="nc bnc" id="L316" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L317">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L318">                        temp = arg.clone();</span>
+                    } else {
+                        break;
+                    }
+<span class="nc" id="L322">                    j++;</span>
+                }
+<span class="nc" id="L324">            } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L325">            }</span>
+
+            //from the lower right corner to the upper left corner (from h1 to a8)
+            try {
+<span class="nc" id="L329">                temp = arg.clone();</span>
+<span class="nc" id="L330">                int s = temp[0];</span>
+<span class="nc" id="L331">                int j =temp[1]-1;</span>
+<span class="nc bnc" id="L332" title="All 2 branches missed.">                for (int i = s - 1; i &gt;= 0; i--) {</span>
+<span class="nc" id="L333">                    temp[0] = i;</span>
+<span class="nc" id="L334">                    temp[1] = j;</span>
+<span class="nc bnc" id="L335" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0) {</span>
+<span class="nc" id="L336">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L337">                        capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L338">                        break;</span>
+                    }
+<span class="nc bnc" id="L340" title="All 2 branches missed.">                    if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L341">                        this.legalMoves.add(temp);</span>
+<span class="nc" id="L342">                        temp = arg.clone();</span>
+                    } else {
+                        break;
+                    }
+<span class="nc" id="L346">                    j--;</span>
+                }
+<span class="nc" id="L348">            } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L349">            }</span>
+
+        } else { //if not white check if black
+<span class="nc bnc" id="L352" title="All 2 branches missed.">            if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;black&quot;) == 0) {</span>
+                //diagonal movements for black Queen
+                //from upper left corner to lower right corner (from a8 to h1)
+                try {
+<span class="nc" id="L356">                    int s = temp[1];</span>
+<span class="nc" id="L357">                    int j = temp[0]+1;</span>
+<span class="nc bnc" id="L358" title="All 2 branches missed.">                    for (int i = s + 1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L359">                        temp[1] = i;</span>
+<span class="nc" id="L360">                        temp[0] = j;</span>
+<span class="nc bnc" id="L361" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0) {</span>
+<span class="nc" id="L362">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L363">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L364">                            break;</span>
+                        }
+<span class="nc bnc" id="L366" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L367">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L368">                            temp = arg.clone();</span>
+                        } else {
+                            break;
+                        }
+<span class="nc" id="L372">                        j++;</span>
+                    }
+<span class="nc" id="L374">                } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L375">                }</span>
+
+                //from the lower right corner to the upper left corner (from h1 to a8)
+                try {
+<span class="nc" id="L379">                    temp = arg.clone();</span>
+<span class="nc" id="L380">                    int s = temp[1];</span>
+<span class="nc" id="L381">                    int j =temp[0]-1;</span>
+<span class="nc bnc" id="L382" title="All 2 branches missed.">                    for (int i = s - 1; i &gt;= 0; i--) {</span>
+<span class="nc" id="L383">                        temp[1] = i;</span>
+<span class="nc" id="L384">                        temp[0] = j;</span>
+<span class="nc bnc" id="L385" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0) {</span>
+<span class="nc" id="L386">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L387">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L388">                            break;</span>
+                        }
+<span class="nc bnc" id="L390" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L391">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L392">                            temp = arg.clone();</span>
+                        } else {
+                            break;
+                        }
+<span class="nc" id="L396">                        j--;</span>
+                    }
+<span class="nc" id="L398">                } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L399">                }</span>
+
+                //from the lower left corner to the upper right corner (from a1 to h8)
+                try {
+<span class="nc" id="L403">                    temp = arg.clone();</span>
+<span class="nc" id="L404">                    int s = temp[0];</span>
+<span class="nc" id="L405">                    int j = temp[1]-1;</span>
+<span class="nc bnc" id="L406" title="All 2 branches missed.">                    for (int i = s + 1; i &lt;= 7; i++) {</span>
+<span class="nc" id="L407">                        temp[0] = i;</span>
+<span class="nc" id="L408">                        temp[1] = j;</span>
+<span class="nc bnc" id="L409" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0) {</span>
+<span class="nc" id="L410">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L411">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L412">                            break;</span>
+                        }
+<span class="nc bnc" id="L414" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L415">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L416">                            temp = arg.clone();</span>
+                        } else {
+                            break;
+                        }
+<span class="nc" id="L420">                        j--;</span>
+                    }
+<span class="nc" id="L422">                } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L423">                }</span>
+
+                //from the upper right corner to the lower left corner (from h8 to a1)
+                try {
+<span class="nc" id="L427">                    temp = arg.clone();</span>
+<span class="nc" id="L428">                    int s = temp[0];</span>
+<span class="nc" id="L429">                    int j =temp[1]+1;</span>
+<span class="nc bnc" id="L430" title="All 2 branches missed.">                    for (int i = s - 1; i &gt;= 0; i--) {</span>
+<span class="nc" id="L431">                        temp[0] = i;</span>
+<span class="nc" id="L432">                        temp[1] = j;</span>
+<span class="nc bnc" id="L433" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;white&quot;) == 0) {</span>
+<span class="nc" id="L434">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L435">                            capture(temp, chessboard[temp[1]][temp[0]], color);</span>
+<span class="nc" id="L436">                            break;</span>
+                        }
+<span class="nc bnc" id="L438" title="All 2 branches missed.">                        if (chessboard[temp[1]][temp[0]].getColor().compareTo(&quot;invalid&quot;) == 0) {</span>
+<span class="nc" id="L439">                            this.legalMoves.add(temp);</span>
+<span class="nc" id="L440">                            temp = arg.clone();</span>
+                        } else {
+                            break;
+                        }
+<span class="nc" id="L444">                        j++;</span>
+                    }
+<span class="nc" id="L446">                } catch (Exception ArrayIndexOutOfBoundsException) {</span>
+<span class="nc" id="L447">                }</span>
+            }
+        }
+
+<span class="nc" id="L451">        return this.legalMoves;</span>
+    }
+
+    /**
+     * Return Queen's value.
+     * @return  valuePoint
+     */
+    public int getValuePoint(){
+<span class="nc" id="L459">        return this.valuePoint;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
