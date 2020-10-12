@@ -1,4 +1,4 @@
-# uniba_ingSoft_Exam2020
+# Chess Game (uniba_ingSoft_Exam2020)
 
 **Exam**: "Ingegneria del Software"
 
